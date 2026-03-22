@@ -30,13 +30,11 @@ export default function Home() {
   const session = sessionData?.session;
   const isLoggedIn = !!session;
   const [catEyeTransform, setCatEyeTransform] = useState('translate(0%, 0%)');
-  const [fishEyeTransform, setFishEyeTransform] = useState('translate(0%, 0%)');
   const catImgRef = React.useRef<HTMLImageElement>(null);
   const fishImgRef = React.useRef<HTMLImageElement>(null);
 
   const handleMouseMove = (e: MouseEvent) => {
     setCatEyeTransform(getEyeTransform(e, catImgRef));
-    setFishEyeTransform(getEyeTransform(e, fishImgRef, 100, 30));
   };
 
   useEffect(() => {
@@ -116,11 +114,6 @@ export default function Home() {
     }
   };
 
-  const handleOpen = () => {
-    if (!logo) return;
-    window.open(logo, '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div className="px-4 pt-12 sm:pt-18">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center lg:gap-16 lg:px-12 xl:px-24 max-w-6xl mx-auto">
@@ -147,7 +140,7 @@ export default function Home() {
 
 
             <p className="text-muted-foreground text-sm sm:text-base">
-              Find logo of sites for you 😺
+              Finds logo of sites for you 😺
             </p>
           </div>
 
@@ -178,7 +171,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center lg:flex-shrink-0">
-          <div className="mt-6 sm:mt-8 lg:mt-0 relative w-52 sm:w-64 lg:w-96 aspect-square">
+          <div className="mt-6 sm:mt-8 lg:mt-0 relative w-64 lg:w-96 aspect-square">
             {error ? (
               <Image src="/cat-error.svg" alt="Cat Logo" fill ref={catImgRef} />
             ) : loading ? (
@@ -229,10 +222,6 @@ export default function Home() {
             width={516}
             className="w-full h-auto"
             ref={fishImgRef}
-          />
-          <span
-            className="absolute top-[37%] left-[87.5%] h-[3%] aspect-square -translate-x-1/2 -translate-y-1/2 bg-white rounded-full"
-            style={{ transform: fishEyeTransform }}
           />
         </div>
 

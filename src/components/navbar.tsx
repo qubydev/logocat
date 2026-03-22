@@ -27,13 +27,13 @@ export default function Navbar() {
         <div className='w-full h-14 flex items-center px-4'>
             <Link href="/" className='flex items-center gap-2'>
                 <Image
-                    src="/logo.png"
+                    src="/logo.svg"
                     alt="Logo"
                     width={100}
                     height={100}
                     className='size-10'
                 />
-                <h1 className='font-bold text-[22px] hidden sm:block text-primary'>logocat</h1>
+                <h1 className='font-bold text-[22px] hidden sm:block text-primary font-handlee'>logocat</h1>
             </Link>
             <div className='ml-auto flex items-center gap-2'>
                 <a href="https://qubydev.vercel.app/" target="_blank" rel="noopener noreferrer" className='hover:scale-110 transition-all duration-300'>
