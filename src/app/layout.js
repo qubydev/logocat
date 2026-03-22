@@ -1,10 +1,16 @@
-import { JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Patrick_Hand } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import localFont from "next/font/local";
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weights: ["400", "500", "600", "700"],
+const comicSans = localFont({
+  src: [
+    { path: '../assets/fonts/COMIC.woff', weight: '400', style: 'normal' },
+    { path: '../assets/fonts/comici.woff', weight: '400', style: 'italic' },
+    { path: '../assets/fonts/design.graffiti.comicsansmsgras.woff', weight: '700', style: 'normal' },
+    { path: '../assets/fonts/comicz.woff', weight: '700', style: 'italic' },
+  ],
+  variable: '--font-comic-sans',
 });
 
 export const metadata = {
@@ -16,9 +22,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${jetBrainsMono.className} h-full antialiased`}
+      className={`${comicSans.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -141,8 +141,12 @@ export const fetchLogo = async (link) => {
 
         return { success: !!logo, logo, error: null };
     } catch (err) {
-        if (axios.isAxiosError(err) && err.response?.status === 403) {
-            return { success: false, logo: null, error: 'Protected content can not be accessed.' };
+        if (axios.isAxiosError(err)) {
+            if (err.response?.status === 403) {
+                return { success: false, logo: null, error: 'Protected content can not be accessed.' };
+            }
+
+            return { success: false, logo: null, error: `Something went wrong!${err.response?.status ? ` [${err.response?.status}]` : ''}` };
         }
         return { success: false, logo: null, error: err.message };
     }
