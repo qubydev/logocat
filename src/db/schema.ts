@@ -123,3 +123,11 @@ export const creditsRelations = relations(credits, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+export const waitlist = pgTable("waitlist", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  email: text("email").notNull().unique(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
