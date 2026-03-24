@@ -67,7 +67,7 @@ export default function ApiWaitlist() {
                                 type="email"
                                 name="email"
                                 placeholder="Enter your email"
-                                className="flex-1 w-full bg-background"
+                                className="flex-1 w-full bg-background py-2"
                                 required
                                 disabled={status === "loading"}
                             />
@@ -75,6 +75,7 @@ export default function ApiWaitlist() {
                                 type="submit"
                                 className="w-full sm:w-auto shrink-0 gap-2"
                                 disabled={status === "loading"}
+                                size="lg"
                             >
                                 {status === "loading" ? (
                                     <>
